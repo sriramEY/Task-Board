@@ -88,10 +88,15 @@ function Taskboard() {
       })
     );
 
+  //extra fields added
   const initialValues = useMemo<TaskboardItemFormValues>(
     () => ({
+      name: itemToEdit?.name ?? '',
       title: itemToEdit?.title ?? '',
       description: itemToEdit?.description ?? '',
+      updates: itemToEdit?.updates ?? '',
+      startDate: itemToEdit?.startDate ?? '',
+      endDate: itemToEdit?.endDate ?? '',
     }),
     [itemToEdit]
   );
@@ -130,8 +135,13 @@ function Taskboard() {
                   .flatMap((items) => items)
                   .find((item) => item.id === itemToEdit.id);
                 if (draftItem) {
+                  draftItem.name = values.name;
                   draftItem.title = values.title;
                   draftItem.description = values.description;
+                  //extra fields added
+                  draftItem.updates = values.updates;
+                  draftItem.startDate = values.startDate;
+                  draftItem.endDate = values.endDate;
                 }
               } else {
                 // Adding new item as "to do"

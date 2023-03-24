@@ -99,6 +99,35 @@ function TaskboardItemCard({
           {item.description}
         </Typography.Paragraph>
       </BaseTooltip>
+
+      {/* //extra fields added ... */}
+      <BaseTooltip overlay={item.name}>
+        <Typography.Paragraph type="secondary" ellipsis={{ rows: 2 }}>
+          {item.name}
+        </Typography.Paragraph>
+      </BaseTooltip>
+
+
+    <BaseTooltip overlay={item.updates}>
+        <Typography.Paragraph type="secondary" ellipsis={{ rows: 2 }}>
+          {item.updates}
+        </Typography.Paragraph>
+      </BaseTooltip>
+
+
+    <BaseTooltip overlay={item.startDate}>
+        <Typography.Paragraph type="secondary" ellipsis={{ rows: 2 }}>
+          {item.startDate}
+        </Typography.Paragraph>
+      </BaseTooltip>
+
+
+    <BaseTooltip overlay={item.endDate}>
+        <Typography.Paragraph type="secondary" ellipsis={{ rows: 2 }}>
+          {item.endDate}
+        </Typography.Paragraph>
+      </BaseTooltip>
+
     </StyledCard>
   );
 }

@@ -1,7 +1,12 @@
+//extra fields added
 export interface TaskboardItem {
   id: string;
+  name: string,
   title: string;
   description: string;
+  updates: string;
+  startDate: string;
+  endDate: string;
 }
 
 export enum TaskboardItemStatus {

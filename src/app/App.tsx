@@ -30,7 +30,7 @@ function App() {
     <StyledLayout>
       <StyledHeader>
         <Typography.Title level={3} type="secondary">
-          Drag & Drop Taskboard
+          IBM TECH-HUB
         </Typography.Title>
       </StyledHeader>
       <StyledContent>

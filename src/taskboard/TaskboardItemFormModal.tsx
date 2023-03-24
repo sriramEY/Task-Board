@@ -4,7 +4,8 @@ import { TaskboardItem } from './TaskboardTypes';
 
 export type TaskboardItemFormValues = Pick<
   TaskboardItem,
-  'title' | 'description'
+  //extra fields added
+  'name' | 'title' | 'description' | 'updates' | 'startDate' | 'endDate'
 >;
 
 type TaskboardItemFormModalProps = Pick<ModalProps, 'visible'> & {
@@ -31,6 +32,19 @@ function TaskboardItemFormModal({
     }
   }, [form, visible]);
 
+
+  interface taskData {
+    name: string;
+    title: string;
+    description: string;
+    updates: string;
+    startDate: string;
+    endDate?: string;
+  }
+
+  //creating object
+  var taskDetails: taskData
+
   return (
     <Modal
       title="Add Item"
@@ -52,6 +66,21 @@ function TaskboardItemFormModal({
           onCancel();
         }}
       >
+  {/* //Name field added in the form */}
+     <Form.Item
+          name="name"
+          label="Name"
+          rules={[
+            { required: true, message: "'Name' is required" },
+            {
+              max: 100,
+              message: "'Name' can not be longer than 100 characters",
+            },
+          ]}
+        >
+         <Input ref={inputRef} autoFocus />
+        </Form.Item>
+
         <Form.Item
           name="title"
           label="Title"
@@ -63,7 +92,7 @@ function TaskboardItemFormModal({
             },
           ]}
         >
-          <Input ref={inputRef} autoFocus />
+          <Input ref={inputRef} />
         </Form.Item>
         <Form.Item
           name="description"
@@ -76,11 +105,55 @@ function TaskboardItemFormModal({
             },
           ]}
         >
-          <Input.TextArea rows={4} />
+          <Input ref={inputRef} />
+        </Form.Item>
+
+         {/* //extra fields added */}
+        <Form.Item
+          name="updates"
+          label="Updates"
+          rules={[
+            { required: false, message: "Updates" },
+            {
+
+              message: "'Updates' can not be longer than 100 characters",
+            },
+          ]}
+        >
+         <Input.TextArea rows={4} />
+        </Form.Item>
+
+        {/* //placeholder need to be added */}
+        <Form.Item
+          name="startDate"
+          label="Start Date"
+          rules={[
+            { required: true, message: "'Start Date' is required" },
+            {
+              max: 100,
+              message: "'Start Date' can not be longer than 100 characters",
+            },
+          ]}
+        >
+          <Input ref={inputRef} />
+        </Form.Item>
+        <Form.Item
+          name="endDate"
+          label="End Date"
+          rules={[
+            { required: false, message: "'End Date' is required" },
+            {
+              max: 100,
+              message: "'End Date' can not be longer than 100 characters",
+            },
+          ]}
+        >
+          <Input ref={inputRef} />
         </Form.Item>
       </Form>
     </Modal>
   );
+  console.log(Form.Item.toString())
 }
 
 export default TaskboardItemFormModal;
